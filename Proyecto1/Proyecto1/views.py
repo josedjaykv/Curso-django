@@ -17,7 +17,7 @@ class persona(object):
 
 #La fucion recibe un request, cada funcion en el archivo views son vistas
 def saludo(request): #primera vista    
-    p1 = persona('Jose', 'Jayk Vanegas')
+    p1 = persona('Jose', 'Vanegas')
     fecha_actual = datetime.datetime.now()
     temas_del_curso = ['Plantillas', 'Modelos', 'Formularios', 'Vistas', 'Despliegue']
 
