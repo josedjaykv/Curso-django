@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
 from django.template import loader
+from django.shortcuts import render
 
 
 
@@ -21,10 +22,8 @@ def saludo(request): #primera vista
     fecha_actual = datetime.datetime.now()
     temas_del_curso = ['Plantillas', 'Modelos', 'Formularios', 'Vistas', 'Despliegue']
  
-    doc_externo = loader.get_template('miplantilla.html')
     diccionario = {'nombre_persona':p1.nombre, 'apellido_persona':p1.apellido, 'fecha':fecha_actual, 'temas':temas_del_curso}
-    documento = doc_externo.render(diccionario)
-    return HttpResponse(documento)
+    return HttpResponse(render(request, "miplantilla.html", diccionario))
 
 
 
@@ -58,3 +57,12 @@ def calEdad(request, year, edad):
 
     return HttpResponse(mensaje)
     #http://localhost:8000/edades/2050
+
+def cursoC(request):
+    fecha_actual = datetime.datetime.now()
+    return render(request, "CursoC.html", {"fecha":fecha_actual})
+
+def cursoCss(request):
+    fecha_actual = datetime.datetime.now()
+    return render(request, "CursoCss.html", {"fecha":fecha_actual})
+
