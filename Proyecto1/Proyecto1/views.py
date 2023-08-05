@@ -20,17 +20,9 @@ def saludo(request): #primera vista
     p1 = persona('Jose', 'Vanegas')
     fecha_actual = datetime.datetime.now()
     temas_del_curso = ['Plantillas', 'Modelos', 'Formularios', 'Vistas', 'Despliegue']
-
-    #doc_externo = open("C:/Users/HP/OneDrive/Escritorio/Proyecto 2/ProyectosDjango/Proyecto1/Proyecto1/plantillas/miplantilla.html")
-    #plt = Template(doc_externo.read())
-    #doc_externo.close()
-
+ 
     doc_externo = loader.get_template('miplantilla.html')
-
     diccionario = {'nombre_persona':p1.nombre, 'apellido_persona':p1.apellido, 'fecha':fecha_actual, 'temas':temas_del_curso}
-
-    #ctx = Context({'nombre_persona':p1.nombre, 'apellido_persona':p1.apellido, 'fecha':fecha_actual, 'temas':temas_del_curso})
-
     documento = doc_externo.render(diccionario)
     return HttpResponse(documento)
 
